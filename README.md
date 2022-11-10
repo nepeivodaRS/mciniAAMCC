@@ -11,9 +11,14 @@ $ cd build
 $ cmake ..
 $ make
 ```
-2. set up the environment:
+2. either set up the environment:
 ```
 $ . ../macro/config.sh
+```
+or install as a regular library:
+```
+$ sudo make install
+$ sudo ldconfig
 ```
 3. convert UrQMD \*.f20 files (OSCAR1999A format):
 ```
