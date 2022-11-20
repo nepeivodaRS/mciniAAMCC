@@ -15,11 +15,11 @@ if (ROOT_USE_FILE)
     include(${ROOT_USE_FILE})
 endif ()
 
-if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.9.0)
-    message(WARNING "GCC compiler is older than 4.9.0. Boost library must be used!")
-    find_package(Boost REQUIRED COMPONENTS regex)
-    include_directories(${Boost_INCLUDE_DIRS})
-endif ()
+# if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.9.0)
+message(WARNING "GCC compiler is older than 4.9.0. Boost library must be used!")
+find_package(Boost REQUIRED COMPONENTS regex)
+include_directories(${Boost_INCLUDE_DIRS})
+# endif ()
 
 include_directories(include ${CMAKE_SOURCE_DIR})
 
@@ -49,9 +49,9 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libMcIniData.rootmap ${CMAKE_CURRENT_B
         DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 add_executable(JAMReader src/jam/JAMRunInfo.cxx src/jam/JAMReader.cxx)
-if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.9.0)
-  target_link_libraries(JAMReader PUBLIC McIniData ${ROOT_LIBRARIES} ${Boost_LIBRARIES})
-else()
-  target_link_libraries(JAMReader PUBLIC McIniData ${ROOT_LIBRARIES})
-endif ()
+# if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.9.0)
+target_link_libraries(JAMReader PUBLIC McIniData ${ROOT_LIBRARIES} ${Boost_LIBRARIES})
+# else()
+# target_link_libraries(JAMReader PUBLIC McIniData ${ROOT_LIBRARIES})
+# endif ()
 
